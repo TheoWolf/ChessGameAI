@@ -14,7 +14,7 @@ public abstract class Piece {
     final int[] piecePosition;
     private final boolean isFirstMove;
 
-    public Piece(final PieceType type,
+    Piece(final PieceType type,
                  final Alliance alliance,
                  final int[] piecePosition,
                  final boolean isFirstMove) {
