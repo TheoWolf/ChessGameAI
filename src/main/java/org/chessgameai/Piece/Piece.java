@@ -5,7 +5,7 @@ import org.chessgameai.board.Alliance;
 /**
  * Created by reda on 12/25/17.
  */
-public class Piece {
+public abstract class Piece {
 
     private Alliance pieceAlliance;
 
