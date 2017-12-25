@@ -9,7 +9,6 @@ import java.util.Collection;
  */
 public class Pawn extends Piece {
 
-
     public Pawn(final Alliance alliance,
                 final int[] piecePosition,
                 final boolean isFirstMove) {
@@ -19,11 +18,6 @@ public class Pawn extends Piece {
     public Pawn(final Alliance alliance,
                 final int[] piecePosition) {
         super(PieceType.PAWN, alliance, piecePosition, true);
-    }
-
-    @Override
-    void initPosition() {
-
     }
 
     @Override
