@@ -1,6 +1,15 @@
 package org.chessgameai.board;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import org.chessgameai.Piece.*;
+import org.chessgameai.players.BlackPlayer;
+import org.chessgameai.players.Player;
+import org.chessgameai.players.WhitePlayer;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by reda on 12/25/17.
@@ -8,13 +17,49 @@ import org.chessgameai.Piece.*;
 public final class Board {
 
     private static final Board STANDARD_BOARD = createInitialBoard();
-    private final Tile[][] gameBoard;
+    private final Table<Integer,Integer,Tile> gameBoard;
+    private final Collection<Piece> whiteActivePieces;
+    private final Collection<Piece> blackActivePieces;
+    private final WhitePlayer whitePlayer;
+    private final BlackPlayer blackPlayer;
 
     private Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
+        whiteActivePieces = new ArrayList<>();
+        blackActivePieces = new ArrayList<>();
+        calculateActivePieces(builder);
+        whitePlayer = new WhitePlayer("WHITE", whiteActivePieces);
+        blackPlayer = new BlackPlayer("BLACK", blackActivePieces);
     }
 
-    private Tile[][] createGameBoard(Builder builder) {
+    private void calculateActivePieces(Builder builder) {
+
+        for (int i = 0; i < BoardUtils.NUM_TILES_PER_ROW; i++) {
+            for (int j = 0; j < BoardUtils.NUM_TILES_PER_COLUMN; j++) {
+                if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == Alliance.WHITE){
+                    whiteActivePieces.add(builder.boardConfig.get(i,j).getPiece());
+                }else{
+                    blackActivePieces.add(builder.boardConfig.get(i,j).getPiece());
+                }
+            }
+        }
+    }
+
+    //each player can ask to calculate his\her active pieces
+    private Collection<Piece> calculateActivePieces(Builder builder,
+                                                    Alliance alliance) {
+        List<Piece> pieceList =  new ArrayList<>();
+        for (int i = 0; i < BoardUtils.NUM_TILES_PER_ROW; i++) {
+            for (int j = 0; j < BoardUtils.NUM_TILES_PER_COLUMN; j++) {
+                if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == alliance){
+                    pieceList.add(builder.boardConfig.get(i,j).getPiece());
+                }
+            }
+        }
+        return pieceList;
+    }
+
+    private Table<Integer, Integer, Tile> createGameBoard(Builder builder) {
         return builder.boardConfig;
     }
 
@@ -99,7 +144,7 @@ public final class Board {
         final StringBuilder text = new StringBuilder();
         for (int i = BoardUtils.NUM_TILES_PER_ROW-1; i >= 0 ; i--) {
             for (int j = BoardUtils.NUM_TILES_PER_COLUMN-1; j >= 0; j--) {
-                text.append(String.format("%3s",this.gameBoard[i][j].toString()));
+                text.append(String.format("%3s",this.gameBoard.get(i,j).toString()));
             }
             text.append("\n");
         }
@@ -107,16 +152,16 @@ public final class Board {
     }
 
     public static class Builder {
-        Tile[][] boardConfig;
+        Table<Integer,Integer,Tile> boardConfig;
 
         public Builder() {
-            this.boardConfig = new Tile[BoardUtils.NUM_TILES_PER_ROW][BoardUtils.NUM_TILES_PER_COLUMN];
+            this.boardConfig = HashBasedTable.create(BoardUtils.NUM_TILES_PER_ROW,BoardUtils.NUM_TILES_PER_COLUMN);
         }
 
         public Board build() { return new Board(this); }
 
         public Builder setTile(int x, int y, Piece piece) {
-            this.boardConfig[x][y] = Tile.createTile(x,y,piece);
+            this.boardConfig.put(x, y, Tile.createTile(x,y,piece));
             return this;
         }
     }
