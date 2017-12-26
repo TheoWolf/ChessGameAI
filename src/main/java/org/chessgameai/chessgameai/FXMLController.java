@@ -6,8 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import org.chessgameai.Piece.Pawn;
-import org.chessgameai.board.Alliance;
+import org.chessgameai.board.Board;
 
 public class FXMLController implements Initializable {
     
@@ -16,14 +15,14 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        System.out.println("Chess Board");
+        label.setText("Display The Chess Board");
+        Board chessBoard = Board.createInitialBoard();
+        System.out.println(chessBoard.toString());
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Pawn pawn = new Pawn(Alliance.BLACK,new int[]{1,1});
-        System.out.println(pawn.toString());
     }    
 }
