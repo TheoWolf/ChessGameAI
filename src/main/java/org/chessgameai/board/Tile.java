@@ -69,8 +69,8 @@ public abstract class Tile {
         @Override
         public String toString() {
             return this.pieceOnTile.getPieceAllegiance().isWhite() ?
-                    this.pieceOnTile.toString() :
-                    this.pieceOnTile.toString().toLowerCase();
+                    this.pieceOnTile.getPieceAbv().toUpperCase() :
+                    this.pieceOnTile.getPieceAbv().toLowerCase();
         }
 
         @Override
