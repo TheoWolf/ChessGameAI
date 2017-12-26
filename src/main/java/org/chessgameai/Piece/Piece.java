@@ -39,6 +39,65 @@ public abstract class Piece {
 
     public boolean isFirstMove() { return this.isFirstMove; }
 
+    //To remove and initialize the from board class
+    public Collection<int[]> initPosition(){
+        final List<int[]> initPositions = new ArrayList<>();
+        switch (this.getType()) {
+            case PAWN:
+                for (int j = 0; j < 8; j++) {
+                    if (this.getPieceAllegiance() == Alliance.WHITE) {
+                        initPositions.add(new int[]{1, j});
+                    } else {
+                        initPositions.add(new int[]{6, j});
+                    }
+                }
+                break;
+            case QUEEN:
+                if (this.getPieceAllegiance() == Alliance.WHITE) {
+                    initPositions.add(new int[]{0, 3});
+                } else {
+                    initPositions.add(new int[]{7, 3});
+                }
+                break;
+            case KING:
+                if (this.getPieceAllegiance() == Alliance.WHITE) {
+                    initPositions.add(new int[]{0, 4});
+                } else {
+                    initPositions.add(new int[]{7, 4});
+                }
+                break;
+            case BISHOP:
+                if (this.getPieceAllegiance() == Alliance.WHITE) {
+                    initPositions.add(new int[]{0, 2});
+                    initPositions.add(new int[]{0, 5});
+                } else {
+                    initPositions.add(new int[]{7, 2});
+                    initPositions.add(new int[]{7, 5});
+                }
+                break;
+            case KNIGHT:
+                if (this.getPieceAllegiance() == Alliance.WHITE) {
+                    initPositions.add(new int[]{0, 1});
+                    initPositions.add(new int[]{0, 6});
+                } else {
+                    initPositions.add(new int[]{7, 1});
+                    initPositions.add(new int[]{7, 6});
+                }
+                break;
+            case ROOK:
+                if (this.getPieceAllegiance() == Alliance.WHITE) {
+                    initPositions.add(new int[]{0, 0});
+                    initPositions.add(new int[]{0, 6});
+                } else {
+                    initPositions.add(new int[]{7, 0});
+                    initPositions.add(new int[]{7, 6});
+                }
+                break;
+
+        }
+        return initPositions;
+    }
+
     @Override
     public String toString() {
         return "Piece{" +
