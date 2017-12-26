@@ -112,5 +112,10 @@
             <artifactId>guava</artifactId>
             <version>23.5-jre</version> <!-- or 23.5-android for the Android flavor -->
         </dependency>
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>1.10.0</version>
+        </dependency>
     </dependencies>
 </project>

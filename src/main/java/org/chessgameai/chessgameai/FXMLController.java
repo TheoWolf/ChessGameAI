@@ -17,7 +17,7 @@ public class FXMLController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         System.out.println("Chess Board");
         label.setText("Display The Chess Board");
-        Board chessBoard = Board.createInitialBoard();
+        Board chessBoard = Board.createStandardBoard();
         System.out.println(chessBoard.toString());
     }
     
