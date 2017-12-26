@@ -1,6 +1,7 @@
 package org.chessgameai.Piece;
 
 import org.chessgameai.board.Alliance;
+import org.chessgameai.board.BoardUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +29,10 @@ public class Pawn extends Piece {
         if (isFirstMove()) {
             legalMoves.add(new int[]{this.piecePosition[0] + (this.pieceAlliance.getDirection() * 2), this.piecePosition[1]});
         }
-        legalMoves.add(new int[]{this.piecePosition[0] + (this.pieceAlliance.getDirection() * 1), this.piecePosition[1]});
+        if (this.piecePosition[0]+(this.pieceAlliance.getDirection()*1) < BoardUtils.NUM_TILES_PER_ROW
+                && this.piecePosition[0]+(this.pieceAlliance.getDirection()*1) > 0) {
+            legalMoves.add(new int[]{this.piecePosition[0] + (this.pieceAlliance.getDirection() * 1), this.piecePosition[1]});
+        }
         return legalMoves;
     }
 }
