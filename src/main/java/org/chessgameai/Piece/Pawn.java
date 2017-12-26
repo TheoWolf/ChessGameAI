@@ -2,7 +2,9 @@ package org.chessgameai.Piece;
 
 import org.chessgameai.board.Alliance;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by reda on 12/25/17.
@@ -22,6 +24,11 @@ public class Pawn extends Piece {
 
     @Override
     public Collection<int[]> legalMoves() {
-        return null;
+        List<int[]> legalMoves =  new ArrayList<>();
+        if (isFirstMove()) {
+            legalMoves.add(new int[]{this.piecePosition[0] + (this.pieceAlliance.getDirection() * 2), this.piecePosition[1]});
+        }
+        legalMoves.add(new int[]{this.piecePosition[0] + (this.pieceAlliance.getDirection() * 1), this.piecePosition[1]});
+        return legalMoves;
     }
 }
