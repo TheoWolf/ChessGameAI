@@ -23,18 +23,6 @@ public class Knight extends Piece {
         super(PieceType.KNIGHT, alliance, piecePosition, true);
     }
 
-    public Knight(final Alliance alliance){
-        super(PieceType.KNIGHT, alliance, initPosition(alliance), true);
-    }
-
-    private static int[] initPosition(Alliance alliance){
-        if(alliance == Alliance.WHITE){
-            return new int[]{0,1};
-        }else{
-            return new int[]{7,1};
-        }
-    }
-
     @Override
     public Collection<int[]> legalMoves() {
         List<int[]> legalMoves =  new ArrayList<>();
