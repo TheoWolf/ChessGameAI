@@ -22,6 +22,13 @@ public class Knight extends Piece {
                 final int[] piecePosition) {
         super(PieceType.KNIGHT, alliance, piecePosition, true);
     }
+    private int[] initPosition(Alliance alliance){
+        if(alliance == Alliance.WHITE){
+            return new int[]{0,1};
+        }else{
+            return new int[]{7,1};
+        }
+    }
 
     @Override
     public Collection<int[]> legalMoves() {
@@ -30,6 +37,7 @@ public class Knight extends Piece {
         int currentX = this.piecePosition[1];
         int DIRECTION = this.pieceAlliance.getDirection();//Direction
         int OPPOSITE_DIRECTION = this.pieceAlliance.getOppositeDirection();//Opposite Direction
+        //Bugz 1: Wrong if Statement for possible moves of the knight
         if(currentX+2 < BoardUtils.NUM_TILES_PER_ROW
                 && currentX-2 >= 0
                 && currentY+2 < BoardUtils.NUM_TILES_PER_COLUMN
