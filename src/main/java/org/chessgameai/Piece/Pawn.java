@@ -33,7 +33,7 @@ public class Pawn extends Piece {
             legalMoves.add(new int[]{y+(DIRECTION*2), x});
         }
         if (y+(DIRECTION*1) < BoardUtils.NUM_TILES_PER_COLUMN
-                && y+(DIRECTION*1) > 0) {
+                && y+(DIRECTION*1) >= 0) {
             legalMoves.add(new int[]{y+(DIRECTION*1), x});
         }
         return legalMoves;

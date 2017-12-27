@@ -2,10 +2,9 @@ package org.chessgameai.Piece;
 
 import org.chessgameai.board.Alliance;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by reda on 12/25/17.
