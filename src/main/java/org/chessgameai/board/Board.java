@@ -36,8 +36,10 @@ public final class Board {
         List<Piece> pieceList =  new ArrayList<>();
         for (int i = 0; i < BoardUtils.NUM_TILES_PER_ROW; i++) {
             for (int j = 0; j < BoardUtils.NUM_TILES_PER_COLUMN; j++) {
-                if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == alliance){
-                    pieceList.add(builder.boardConfig.get(i,j).getPiece());
+                if(builder.boardConfig.get(i,j).isTileOccupied()){
+                    if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == alliance) {
+                        pieceList.add(builder.boardConfig.get(i, j).getPiece());
+                    }
                 }
             }
         }
