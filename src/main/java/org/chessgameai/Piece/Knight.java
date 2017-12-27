@@ -22,7 +22,12 @@ public class Knight extends Piece {
                 final int[] piecePosition) {
         super(PieceType.KNIGHT, alliance, piecePosition, true);
     }
-    private int[] initPosition(Alliance alliance){
+
+    public Knight(final Alliance alliance){
+        super(PieceType.KNIGHT, alliance, initPosition(alliance), true);
+    }
+
+    private static int[] initPosition(Alliance alliance){
         if(alliance == Alliance.WHITE){
             return new int[]{0,1};
         }else{
