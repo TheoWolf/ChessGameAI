@@ -57,7 +57,7 @@ public abstract class Piece {
         final Piece oPiece = (Piece) o;
         return piecePosition == oPiece.piecePosition
                 && pieceAlliance == oPiece.pieceAlliance
-                && piecePosition.equals(oPiece.piecePosition)
+                && Arrays.equals(piecePosition, oPiece.piecePosition)
                 && isFirstMove == oPiece.isFirstMove
                 && pieceType == oPiece.pieceType;
     }

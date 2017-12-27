@@ -26,87 +26,33 @@ public class Knight extends Piece {
     @Override
     public Collection<int[]> legalMoves() {
         List<int[]> legalMoves =  new ArrayList<>();
-        int currentY = this.piecePosition[0];
-        int currentX = this.piecePosition[1];
-        int DIRECTION = this.pieceAlliance.getDirection();//Direction
-        int OPPOSITE_DIRECTION = this.pieceAlliance.getOppositeDirection();//Opposite Direction
-        //Bugz 1: Wrong if Statement for possible moves of the knight
-        if(currentX+2 < BoardUtils.NUM_TILES_PER_ROW
-                && currentX-2 >= 0
-                && currentY+2 < BoardUtils.NUM_TILES_PER_COLUMN
-                && currentY-2 >= 0){
-            legalMoves.add(new int[]{currentY+2, currentX+1});
-            legalMoves.add(new int[]{currentY+2, currentX-1});
-            legalMoves.add(new int[]{currentY-2, currentX+1});
-            legalMoves.add(new int[]{currentY-2, currentX-1});
-            legalMoves.add(new int[]{currentY+1, currentX+2});
-            legalMoves.add(new int[]{currentY+1, currentX-2});
-            legalMoves.add(new int[]{currentY-1, currentX+2});
-            legalMoves.add(new int[]{currentY-1, currentX-2});
-        }else if(currentX+2 < BoardUtils.NUM_TILES_PER_ROW
-                && currentX-2 >= 0
-                && currentY+2 < BoardUtils.NUM_TILES_PER_COLUMN){
-            if (currentY-1 >= 0) {
-                legalMoves.add(new int[]{currentY + 2, currentX + 1});
-                legalMoves.add(new int[]{currentY + 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX + 2});
-                legalMoves.add(new int[]{currentY + 1, currentX - 2});
-                legalMoves.add(new int[]{currentY - 1, currentX + 2});
-                legalMoves.add(new int[]{currentY - 1, currentX - 2});
-            }else{
-                legalMoves.add(new int[]{currentY + 2, currentX + 1});
-                legalMoves.add(new int[]{currentY + 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX + 2});
-                legalMoves.add(new int[]{currentY + 1, currentX - 2});
-            }
-        }else if(currentX+2 < BoardUtils.NUM_TILES_PER_ROW
-                && currentX-2 >= 0
-                && currentY-2 >= 0){
-            if (currentY+1 < BoardUtils.NUM_TILES_PER_COLUMN) {
-                legalMoves.add(new int[]{currentY - 2, currentX + 1});
-                legalMoves.add(new int[]{currentY - 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX + 2});
-                legalMoves.add(new int[]{currentY + 1, currentX - 2});
-                legalMoves.add(new int[]{currentY - 1, currentX + 2});
-                legalMoves.add(new int[]{currentY - 1, currentX - 2});
-            }else{
-                legalMoves.add(new int[]{currentY - 2, currentX + 1});
-                legalMoves.add(new int[]{currentY - 2, currentX - 1});
-                legalMoves.add(new int[]{currentY - 1, currentX + 2});
-                legalMoves.add(new int[]{currentY - 1, currentX - 2});
-            }
-        }else if (currentX+2 < BoardUtils.NUM_TILES_PER_ROW
-                && currentY+2 < BoardUtils.NUM_TILES_PER_COLUMN
-                && currentY-2 >= 0){
-            if(currentX-1 >= 0) {
-                legalMoves.add(new int[]{currentY + 2, currentX + 1});
-                legalMoves.add(new int[]{currentY + 2, currentX - 1});
-                legalMoves.add(new int[]{currentY - 2, currentX + 1});
-                legalMoves.add(new int[]{currentY - 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX + 2});
-                legalMoves.add(new int[]{currentY - 1, currentX + 2});
-            }else{
-                legalMoves.add(new int[]{currentY + 2, currentX + 1});
-                legalMoves.add(new int[]{currentY - 2, currentX + 1});
-                legalMoves.add(new int[]{currentY + 1, currentX + 2});
-                legalMoves.add(new int[]{currentY - 1, currentX + 2});
-            }
-        }else if (currentX-2 >= 0
-                && currentY+2 < BoardUtils.NUM_TILES_PER_COLUMN
-                && currentY-2 >= 0){
-            if(currentX+1 < BoardUtils.NUM_TILES_PER_ROW) {
-                legalMoves.add(new int[]{currentY + 2, currentX + 1});
-                legalMoves.add(new int[]{currentY + 2, currentX - 1});
-                legalMoves.add(new int[]{currentY - 2, currentX + 1});
-                legalMoves.add(new int[]{currentY - 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX - 2});
-                legalMoves.add(new int[]{currentY - 1, currentX - 2});
-            }else{
-                legalMoves.add(new int[]{currentY + 2, currentX - 1});
-                legalMoves.add(new int[]{currentY - 2, currentX - 1});
-                legalMoves.add(new int[]{currentY + 1, currentX - 2});
-                legalMoves.add(new int[]{currentY - 1, currentX - 2});
-            }
+        int currentI = this.piecePosition[0];
+        int currentJ = this.piecePosition[1];
+        //In ideal world the knight has 8 possible move if one of the coordinate is out of the board
+        // we just ignore it
+        if (currentI+2 < BoardUtils.NUM_TILES_PER_COLUMN && currentJ+1 < BoardUtils.NUM_TILES_PER_ROW){
+            legalMoves.add(new int[]{currentI+2, currentJ+1});
+        }
+        if (currentI+2 < BoardUtils.NUM_TILES_PER_COLUMN && currentJ-1 >=0){
+            legalMoves.add(new int[]{currentI+2, currentJ-1});
+        }
+        if (currentI-2 >= 0  && currentJ+1 < BoardUtils.NUM_TILES_PER_ROW){
+            legalMoves.add(new int[]{currentI-2, currentJ+1});
+        }
+        if (currentI-2 >= 0  && currentJ-1 >= 0) {
+            legalMoves.add(new int[]{currentI-2, currentJ-1});
+        }
+        if (currentI+1 < BoardUtils.NUM_TILES_PER_COLUMN && currentJ+2 < BoardUtils.NUM_TILES_PER_ROW){
+            legalMoves.add(new int[]{currentI+1, currentJ+2});
+        }
+        if (currentI+1 < BoardUtils.NUM_TILES_PER_COLUMN && currentJ-2 >= 0) {
+            legalMoves.add(new int[]{currentI+1, currentJ-2});
+        }
+        if (currentI-1 >= 0 && currentJ+2 < BoardUtils.NUM_TILES_PER_ROW){
+            legalMoves.add(new int[]{currentI-1, currentJ+2});
+        }
+        if (currentI-1 >= 0 && currentJ-2 >= 0){
+            legalMoves.add(new int[]{currentI-1, currentJ-2});
         }
         return legalMoves;
     }
