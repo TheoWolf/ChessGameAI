@@ -2,6 +2,7 @@ package org.chessgameai.players;
 
 import org.chessgameai.Piece.Piece;
 import org.chessgameai.board.Alliance;
+import org.chessgameai.board.Board;
 
 import java.util.Collection;
 
@@ -9,20 +10,20 @@ import java.util.Collection;
  * Created by reda on 12/26/17.
  */
 public final class BlackPlayer extends Player {
-    public BlackPlayer(final String name,
+    public BlackPlayer(final Board board,
+                       final String name,
                        final Collection<Piece> activePieces) {
-        super(name,activePieces);
+        super(board, name, activePieces);
     }
 
-    public BlackPlayer(final Collection<Piece> activePieces) {
-        super("Player2",activePieces);
+    public BlackPlayer(final Board board,
+                       final Collection<Piece> activePieces) {
+        super(board, "Player2", activePieces);
     }
 
-
-    //need to ask the board about the black active pieces
     @Override
     public Collection<Piece> getActivePieces() {
-        return null;
+        return this.board.getBlackActivePieces();
     }
 
     @Override
