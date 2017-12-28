@@ -29,5 +29,12 @@ public final class BlackPlayer extends Player {
     @Override
     public Alliance getAlliance() { return Alliance.BLACK; }
 
+    @Override
+    public String toString() {
+        return "Player Name: "
+                + this.name
+                + " Alliance: "
+                + Alliance.BLACK.toString();
+    }
 
 }

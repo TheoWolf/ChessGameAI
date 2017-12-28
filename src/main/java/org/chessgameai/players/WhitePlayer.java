@@ -3,6 +3,7 @@ package org.chessgameai.players;
 import org.chessgameai.Piece.Piece;
 import org.chessgameai.board.Alliance;
 import org.chessgameai.board.Board;
+import org.chessgameai.board.BoardUtils;
 
 import java.util.Collection;
 
@@ -28,5 +29,13 @@ public final class WhitePlayer extends Player {
 
     @Override
     public Alliance getAlliance() { return Alliance.WHITE; }
+
+    @Override
+    public String toString() {
+        return "Player Name: "
+                + this.name
+                + " Alliance: "
+                + Alliance.WHITE.toString();
+    }
 
 }
