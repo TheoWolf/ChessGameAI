@@ -1,5 +1,6 @@
 package org.chessgameai.players;
 
+import org.chessgameai.moves.Move;
 import org.chessgameai.pieces.Piece;
 import org.chessgameai.Alliance;
 import org.chessgameai.board.Board;
@@ -18,7 +19,7 @@ public abstract class Player {
 
     Player(final Board board,
            final String name,
-           final Collection<Piece> activePieces) {
+           final Collection<Move> legalMoves) {
         this.board = board;
         this.name = name;
         this.playerType = PlayerType.HUMAN;

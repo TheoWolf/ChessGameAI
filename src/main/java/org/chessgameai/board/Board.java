@@ -32,11 +32,11 @@ public final class Board {
         this.gameBoard = createGameBoard(builder);
         this.whiteActivePieces = calculateActivePieces(builder, Alliance.WHITE);
         this.blackActivePieces = calculateActivePieces(builder,Alliance.BLACK);
-        this.whitePlayer = new WhitePlayer(this, "WHITE", whiteActivePieces);
-        this.blackPlayer = new BlackPlayer(this, "BLACK", blackActivePieces);
-        this.currentPlayer = builder.turnToPlay.getPlayerByAlliance(this.whitePlayer, this.blackPlayer);
         final Collection<Move> whiteLegelMoves =  calculateLegalMoves(this.whiteActivePieces);
         final Collection<Move> blackLegelMoves =  calculateLegalMoves(this.blackActivePieces);
+        this.whitePlayer = new WhitePlayer(this, "WHITE", whiteLegelMoves);
+        this.blackPlayer = new BlackPlayer(this, "BLACK", blackLegelMoves);
+        this.currentPlayer = builder.turnToPlay.getPlayerByAlliance(this.whitePlayer, this.blackPlayer);
     }
 
     public Table<Integer, Integer, Tile> getGameBoard() { return gameBoard; }

@@ -1,5 +1,6 @@
 package org.chessgameai.players;
 
+import org.chessgameai.moves.Move;
 import org.chessgameai.pieces.Piece;
 import org.chessgameai.Alliance;
 import org.chessgameai.board.Board;
@@ -12,13 +13,13 @@ import java.util.Collection;
 public final class BlackPlayer extends Player {
     public BlackPlayer(final Board board,
                        final String name,
-                       final Collection<Piece> activePieces) {
-        super(board, name, activePieces);
+                       final Collection<Move> legalMoves) {
+        super(board, name, legalMoves);
     }
 
     public BlackPlayer(final Board board,
-                       final Collection<Piece> activePieces) {
-        super(board, "Player2", activePieces);
+                       final Collection<Move> legalMoves) {
+        super(board, "Player2", legalMoves);
     }
 
     @Override
