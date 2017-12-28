@@ -16,12 +16,14 @@ public abstract class Player {
     protected final boolean isInCheck = false; //TODO
     protected final Board board;
     protected final PlayerType playerType;
+    protected final Collection<Move> legalMoves;
 
     Player(final Board board,
            final String name,
            final Collection<Move> legalMoves) {
         this.board = board;
         this.name = name;
+        this.legalMoves = legalMoves;
         this.playerType = PlayerType.HUMAN;
     }
 
@@ -30,8 +32,10 @@ public abstract class Player {
     }
 
     public PlayerType getPlayerType() {
-        return playerType;
+        return this.playerType;
     }
+
+    public Collection<Move> getLegalMoves() { return this.legalMoves; }
 
     public abstract Collection<Piece> getActivePieces();
     public abstract Alliance getAlliance();
