@@ -1,6 +1,7 @@
 package org.chessgameai.board;
 
 import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Table;
 import org.chessgameai.Piece.*;
 import org.chessgameai.players.BlackPlayer;
@@ -9,10 +10,11 @@ import org.chessgameai.players.WhitePlayer;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by reda on 12/25/17.
+ * Created by TheoWolf on 12/25/17.
  */
 public final class Board {
 
@@ -28,8 +30,8 @@ public final class Board {
         this.gameBoard = createGameBoard(builder);
         this.whiteActivePieces = calculateActivePieces(builder,Alliance.WHITE);
         this.blackActivePieces = calculateActivePieces(builder,Alliance.BLACK);
-        this.whitePlayer = new WhitePlayer("WHITE", whiteActivePieces);
-        this.blackPlayer = new BlackPlayer("BLACK", blackActivePieces);
+        this.whitePlayer = new WhitePlayer(this, "WHITE", whiteActivePieces);
+        this.blackPlayer = new BlackPlayer(this, "BLACK", blackActivePieces);
         this.currentPlayer = builder.turnToPlay.getPlayerByAlliance(this.whitePlayer, this.blackPlayer);
     }
 
@@ -39,15 +41,19 @@ public final class Board {
 
     public Table<Integer, Integer, Tile> getGameBoard() { return gameBoard; }
 
-    public WhitePlayer getWhitePlayer() { return whitePlayer; }
+    public WhitePlayer WhitePlayer() { return whitePlayer; }
 
-    public BlackPlayer getBlackPlayer() { return blackPlayer; }
+    public BlackPlayer BlackPlayer() { return blackPlayer; }
 
     public Player currentPlayer() { return currentPlayer; }
 
     public Collection<Piece> getWhiteActivePieces() { return whiteActivePieces; }
 
     public Collection<Piece> getBlackActivePieces() { return blackActivePieces; }
+
+    public Iterable<Piece> getAllActivePieces(){
+        return Iterables.unmodifiableIterable(Iterables.concat(this.whiteActivePieces,this.blackActivePieces));
+    }
 
     public static Board createStandardBoard(){
         return STANDARD_BOARD;
