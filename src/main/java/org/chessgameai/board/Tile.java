@@ -3,7 +3,7 @@ package org.chessgameai.board;
 import org.chessgameai.Piece.Piece;
 
 /**
- * Created by reda on 12/25/17.
+ * Created by TheoWolf on 12/25/17.
  */
 public abstract class Tile {
 
