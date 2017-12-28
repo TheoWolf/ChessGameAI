@@ -13,5 +13,6 @@ public enum  MoveStatus {
         @Override
         public boolean isDone() { return false; }
     };
+
     public abstract boolean isDone();
 }
