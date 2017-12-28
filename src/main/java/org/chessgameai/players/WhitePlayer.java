@@ -19,7 +19,7 @@ public final class WhitePlayer extends Player {
 
     public WhitePlayer(final Board board,
                        final Collection<Move> legalMoves) {
-        super(board, "Player1",legalMoves);
+        super(board, "Player1", legalMoves);
     }
 
     @Override
