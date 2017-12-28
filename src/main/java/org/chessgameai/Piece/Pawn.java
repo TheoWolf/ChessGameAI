@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by reda on 12/25/17.
+ * Created by TheoWolf on 12/25/17.
  */
 public class Pawn extends Piece {
 

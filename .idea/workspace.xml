@@ -6,7 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Pawn.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Pawn.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Queen.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Queen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Rook.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/Piece/Rook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/board/Board.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/board/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/BlackPlayer.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/BlackPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/Player.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/WhitePlayer.java" afterPath="$PROJECT_DIR$/src/main/java/org/chessgameai/players/WhitePlayer.java" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/chessgameai/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-323">
-              <caret line="23" column="54" lean-forward="false" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+            <state relative-caret-position="133">
+              <caret line="49" column="49" lean-forward="true" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
               <folding>
                 <element signature="method#createInitialBoard#0;class#Board#0" expanded="false" />
                 <element signature="method#toString#0;class#Board#0" expanded="false" />
@@ -830,7 +829,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514431622543</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="get all the Active pieces - Black and White">
+      <created>1514432741876</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1514432741876</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -918,7 +924,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="Change Piece to Abstract" />
     <MESSAGE value="Piece Implementation&#10;" />
     <MESSAGE value="remove the public scope of the Piece constructor" />
     <MESSAGE value="Pawn Creation" />
@@ -943,7 +948,8 @@
     <MESSAGE value="Set Next Move Maker in builder" />
     <MESSAGE value="Add current player by Alliance in Board and Alliance, code cleaning and getter for the fields" />
     <MESSAGE value="get Active Pieces of each player from the board" />
-    <option name="LAST_COMMIT_MESSAGE" value="get Active Pieces of each player from the board" />
+    <MESSAGE value="get all the Active pieces - Black and White" />
+    <option name="LAST_COMMIT_MESSAGE" value="get all the Active pieces - Black and White" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1415,8 +1421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/chessgameai/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="23" column="54" lean-forward="false" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+        <state relative-caret-position="133">
+          <caret line="49" column="49" lean-forward="true" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
           <folding>
             <element signature="method#createInitialBoard#0;class#Board#0" expanded="false" />
             <element signature="method#toString#0;class#Board#0" expanded="false" />

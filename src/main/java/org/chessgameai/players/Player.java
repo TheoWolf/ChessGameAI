@@ -12,7 +12,7 @@ import java.util.Collection;
 public abstract class Player {
 
     protected final String name;
-    protected final boolean isInCheck = false;
+    protected final boolean isInCheck = false; //TODO
     protected final Board board;
 
     Player(final Board board,

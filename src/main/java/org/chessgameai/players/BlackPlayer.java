@@ -7,7 +7,7 @@ import org.chessgameai.board.Board;
 import java.util.Collection;
 
 /**
- * Created by reda on 12/26/17.
+ * Created by TheoWolf on 12/26/17.
  */
 public final class BlackPlayer extends Player {
     public BlackPlayer(final Board board,
