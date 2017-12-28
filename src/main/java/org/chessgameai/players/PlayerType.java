@@ -5,5 +5,5 @@ package org.chessgameai.players;
  */
 public enum PlayerType {
     HUMAN,
-    COMPUTER;
+    COMPUTER
 }

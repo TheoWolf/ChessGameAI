@@ -14,16 +14,22 @@ public abstract class Player {
     protected final String name;
     protected final boolean isInCheck = false; //TODO
     protected final Board board;
+    protected final PlayerType playerType;
 
     Player(final Board board,
            final String name,
            final Collection<Piece> activePieces) {
         this.board = board;
         this.name = name;
+        this.playerType = PlayerType.HUMAN;
     }
 
     public void timer(){
         //TODO
+    }
+
+    public PlayerType getPlayerType() {
+        return playerType;
     }
 
     public abstract Collection<Piece> getActivePieces();
