@@ -4,6 +4,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.chessgameai.Piece.*;
 import org.chessgameai.players.BlackPlayer;
+import org.chessgameai.players.Player;
 import org.chessgameai.players.WhitePlayer;
 
 import java.util.ArrayList;
@@ -21,53 +22,35 @@ public final class Board {
     private final Collection<Piece> blackActivePieces;
     private final WhitePlayer whitePlayer;
     private final BlackPlayer blackPlayer;
+    private final Player currentPlayer;
 
     private Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
-        whiteActivePieces = calculateActivePieces(builder,Alliance.WHITE);
-        blackActivePieces = calculateActivePieces(builder,Alliance.BLACK);
-        whitePlayer = new WhitePlayer("WHITE", whiteActivePieces);
-        blackPlayer = new BlackPlayer("BLACK", blackActivePieces);
-    }
-
-    //each player can ask to calculate his\her active pieces
-    private Collection<Piece> calculateActivePieces(Builder builder,
-                                                    Alliance alliance) {
-        List<Piece> pieceList =  new ArrayList<>();
-        for (int i = 0; i < BoardUtils.NUM_TILES_PER_ROW; i++) {
-            for (int j = 0; j < BoardUtils.NUM_TILES_PER_COLUMN; j++) {
-                if(builder.boardConfig.get(i,j).isTileOccupied()){
-                    if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == alliance) {
-                        pieceList.add(builder.boardConfig.get(i, j).getPiece());
-                    }
-                }
-            }
-        }
-        return pieceList;
+        this.whiteActivePieces = calculateActivePieces(builder,Alliance.WHITE);
+        this.blackActivePieces = calculateActivePieces(builder,Alliance.BLACK);
+        this.whitePlayer = new WhitePlayer("WHITE", whiteActivePieces);
+        this.blackPlayer = new BlackPlayer("BLACK", blackActivePieces);
+        this.currentPlayer = builder.turnToPlay.getPlayerByAlliance(this.whitePlayer, this.blackPlayer);
     }
 
     private Table<Integer, Integer, Tile> createGameBoard(Builder builder) {
         return builder.boardConfig;
     }
 
-    public static Board createStandardBoard(){
-        return STANDARD_BOARD;
-    }
+    public Table<Integer, Integer, Tile> getGameBoard() { return gameBoard; }
 
     public WhitePlayer getWhitePlayer() { return whitePlayer; }
 
     public BlackPlayer getBlackPlayer() { return blackPlayer; }
 
-    @Override
-    public String toString() {
-        final StringBuilder text = new StringBuilder();
-        for (int i = BoardUtils.NUM_TILES_PER_ROW-1; i >= 0 ; i--) {
-            for (int j = BoardUtils.NUM_TILES_PER_COLUMN-1; j >= 0; j--) {
-                text.append(String.format("%3s",this.gameBoard.get(i,j).toString()));
-            }
-            text.append("\n");
-        }
-        return text.toString();
+    public Player currentPlayer() { return currentPlayer; }
+
+    public Collection<Piece> getWhiteActivePieces() { return whiteActivePieces; }
+
+    public Collection<Piece> getBlackActivePieces() { return blackActivePieces; }
+
+    public static Board createStandardBoard(){
+        return STANDARD_BOARD;
     }
 
     public static Board createInitialBoard(){
@@ -139,7 +122,35 @@ public final class Board {
                 }
             }
         }
+        builder.setTurnToPlay(Alliance.WHITE);
         return builder.build();
+    }
+
+    private Collection<Piece> calculateActivePieces(Builder builder,
+                                                    Alliance alliance) {
+        List<Piece> pieceList =  new ArrayList<>();
+        for (int i = 0; i < BoardUtils.NUM_TILES_PER_ROW; i++) {
+            for (int j = 0; j < BoardUtils.NUM_TILES_PER_COLUMN; j++) {
+                if(builder.boardConfig.get(i,j).isTileOccupied()){
+                    if(builder.boardConfig.get(i,j).getPiece().getPieceAllegiance() == alliance) {
+                        pieceList.add(builder.boardConfig.get(i, j).getPiece());
+                    }
+                }
+            }
+        }
+        return pieceList;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder text = new StringBuilder();
+        for (int i = BoardUtils.NUM_TILES_PER_ROW-1; i >= 0 ; i--) {
+            for (int j = BoardUtils.NUM_TILES_PER_COLUMN-1; j >= 0; j--) {
+                text.append(String.format("%3s",this.gameBoard.get(i,j).toString()));
+            }
+            text.append("\n");
+        }
+        return text.toString();
     }
 
     public static class Builder {
