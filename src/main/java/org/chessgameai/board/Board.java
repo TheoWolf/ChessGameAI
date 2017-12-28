@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Table;
 import org.chessgameai.Alliance;
 import org.chessgameai.Piece.*;
+import org.chessgameai.pieces.*;
 import org.chessgameai.players.BlackPlayer;
 import org.chessgameai.players.Player;
 import org.chessgameai.players.WhitePlayer;

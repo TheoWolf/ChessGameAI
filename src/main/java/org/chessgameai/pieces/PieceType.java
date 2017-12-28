@@ -1,4 +1,4 @@
-package org.chessgameai.Piece;
+package org.chessgameai.pieces;
 
 /**
  * Created by reda on 12/25/17.

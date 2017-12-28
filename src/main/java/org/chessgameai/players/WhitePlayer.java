@@ -1,6 +1,6 @@
 package org.chessgameai.players;
 
-import org.chessgameai.Piece.Piece;
+import org.chessgameai.pieces.Piece;
 import org.chessgameai.Alliance;
 import org.chessgameai.board.Board;
 

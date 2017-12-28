@@ -1,6 +1,7 @@
 package org.chessgameai.Piece;
 
 import org.chessgameai.Alliance;
+import org.chessgameai.pieces.Knight;
 import org.junit.Test;
 
 import java.util.Collection;

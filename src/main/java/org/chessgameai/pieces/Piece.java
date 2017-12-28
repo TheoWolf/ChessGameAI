@@ -1,4 +1,4 @@
-package org.chessgameai.Piece;
+package org.chessgameai.pieces;
 
 import org.chessgameai.Alliance;
 

@@ -1,6 +1,6 @@
 package org.chessgameai.board;
 
-import org.chessgameai.Piece.Piece;
+import org.chessgameai.pieces.Piece;
 
 /**
  * Created by TheoWolf on 12/25/17.

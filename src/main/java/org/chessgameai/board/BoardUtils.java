@@ -1,11 +1,5 @@
 package org.chessgameai.board;
 
-import org.chessgameai.Piece.Piece;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 /**
  * Created by TheoWolf on 12/25/17.
  */
