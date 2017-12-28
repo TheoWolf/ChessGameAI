@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Table;
 import org.chessgameai.Alliance;
 import org.chessgameai.Piece.*;
+import org.chessgameai.moves.Move;
 import org.chessgameai.pieces.*;
 import org.chessgameai.players.BlackPlayer;
 import org.chessgameai.players.Player;
@@ -34,10 +35,8 @@ public final class Board {
         this.whitePlayer = new WhitePlayer(this, "WHITE", whiteActivePieces);
         this.blackPlayer = new BlackPlayer(this, "BLACK", blackActivePieces);
         this.currentPlayer = builder.turnToPlay.getPlayerByAlliance(this.whitePlayer, this.blackPlayer);
-    }
-
-    private Table<Integer, Integer, Tile> createGameBoard(Builder builder) {
-        return builder.boardConfig;
+        final Collection<Move> whiteLegelMoves =  calculateLegalMoves(this.whiteActivePieces);
+        final Collection<Move> blackLegelMoves =  calculateLegalMoves(this.blackActivePieces);
     }
 
     public Table<Integer, Integer, Tile> getGameBoard() { return gameBoard; }
@@ -131,6 +130,15 @@ public final class Board {
         }
         builder.setTurnToPlay(Alliance.WHITE);
         return builder.build();
+    }
+
+    private Collection<Move> calculateLegalMoves(Collection<Piece> activePieces) {
+        //TODO
+        return null;
+    }
+
+    private Table<Integer, Integer, Tile> createGameBoard(Builder builder) {
+        return builder.boardConfig;
     }
 
     private Collection<Piece> calculateActivePieces(Builder builder,
