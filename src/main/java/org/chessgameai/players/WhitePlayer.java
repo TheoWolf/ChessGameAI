@@ -30,6 +30,9 @@ public final class WhitePlayer extends Player {
     public Alliance getAlliance() { return Alliance.WHITE; }
 
     @Override
+    public Alliance getOpponent() { return Alliance.BLACK; }
+
+    @Override
     public String toString() {
         return "Player Name: "
                 + this.name
