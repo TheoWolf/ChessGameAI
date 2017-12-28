@@ -26,4 +26,5 @@ public final class WhitePlayer extends Player {
 
     @Override
     public Alliance getAlliance() { return Alliance.WHITE; }
+
 }

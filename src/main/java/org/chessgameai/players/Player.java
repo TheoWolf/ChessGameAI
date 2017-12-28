@@ -18,11 +18,11 @@ public abstract class Player {
         this.name = name;
     }
 
-    //implement a timer for each player
+    public void timer(){
+        //TODO
+    }
 
     public abstract Collection<Piece> getActivePieces();
     public abstract Alliance getAlliance();
-
-
 
 }

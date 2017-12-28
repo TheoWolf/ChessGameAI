@@ -144,6 +144,7 @@ public final class Board {
 
     public static class Builder {
         Table<Integer,Integer,Tile> boardConfig;
+        Alliance turnToPlay;
 
         public Builder() {
             this.boardConfig = HashBasedTable.create(BoardUtils.NUM_TILES_PER_ROW,BoardUtils.NUM_TILES_PER_COLUMN);
@@ -151,7 +152,12 @@ public final class Board {
 
         public Board build() { return new Board(this); }
 
-        public Builder setTile(int x, int y, Piece piece) {
+        public Builder setTurnToPlay(final Alliance turnToPlay){
+            this.turnToPlay = turnToPlay;
+            return this;
+        }
+
+        public Builder setTile(final int x, final int y, final Piece piece) {
             this.boardConfig.put(x, y, Tile.createTile(x,y,piece));
             return this;
         }
