@@ -1,14 +1,9 @@
 package org.chessgameai.Piece;
 
-import org.chessgameai.board.Alliance;
-import org.junit.Before;
+import org.chessgameai.Alliance;
 import org.junit.Test;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by reda on 12/27/17.

@@ -1,6 +1,6 @@
 package org.chessgameai.Piece;
 
-import org.chessgameai.board.Alliance;
+import org.chessgameai.Alliance;
 
 
 import java.util.Arrays;

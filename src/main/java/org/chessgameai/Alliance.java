@@ -1,4 +1,4 @@
-package org.chessgameai.board;
+package org.chessgameai;
 
 import org.chessgameai.players.BlackPlayer;
 import org.chessgameai.players.Player;

@@ -1,9 +1,8 @@
 package org.chessgameai.players;
 
 import org.chessgameai.Piece.Piece;
-import org.chessgameai.board.Alliance;
+import org.chessgameai.Alliance;
 import org.chessgameai.board.Board;
-import org.chessgameai.board.BoardUtils;
 
 import java.util.Collection;
 

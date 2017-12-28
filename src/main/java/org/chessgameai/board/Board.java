@@ -3,6 +3,7 @@ package org.chessgameai.board;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Table;
+import org.chessgameai.Alliance;
 import org.chessgameai.Piece.*;
 import org.chessgameai.players.BlackPlayer;
 import org.chessgameai.players.Player;
@@ -10,7 +11,6 @@ import org.chessgameai.players.WhitePlayer;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,7 +28,7 @@ public final class Board {
 
     private Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
-        this.whiteActivePieces = calculateActivePieces(builder,Alliance.WHITE);
+        this.whiteActivePieces = calculateActivePieces(builder, Alliance.WHITE);
         this.blackActivePieces = calculateActivePieces(builder,Alliance.BLACK);
         this.whitePlayer = new WhitePlayer(this, "WHITE", whiteActivePieces);
         this.blackPlayer = new BlackPlayer(this, "BLACK", blackActivePieces);

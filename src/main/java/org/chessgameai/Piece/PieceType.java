@@ -1,7 +1,5 @@
 package org.chessgameai.Piece;
 
-import org.chessgameai.board.Alliance;
-
 /**
  * Created by reda on 12/25/17.
  */
